@@ -1,0 +1,37 @@
+{
+  "name": "starter-next-auth",
+  "version": "1.0.0",
+  "description": "starter for a project with Next.js and authentication",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwmurph/starter-next-auth.git"
+  },
+  "author": "edward",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edwmurph/starter-next-auth/issues"
+  },
+  "homepage": "https://github.com/edwmurph/starter-next-auth#readme",
+  "dependencies": {
+    "bootstrap": "5.0.1",
+    "lodash.get": "4.4.2",
+    "mongodb": "3.6.9",
+    "next": "10.0.7",
+    "next-auth": "3.27.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "styled-components": "5.3.0"
+  },
+  "devDependencies": {
+    "@edwmurph/eslint-config": "0.0.14",
+    "babel-plugin-styled-components": "1.12.0"
+  }
+}
