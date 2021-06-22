@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import styled from 'styled-components';
@@ -12,43 +11,6 @@ const StyledHeader = styled.header`
   width: 100%;
 }
 
-.loading,
-.loaded {
-  position: relative;
-  top: 0;
-  opacity: 1;
-  overflow: hidden;
-  border-radius: 0 0 .6rem .6rem;
-  padding: .6rem 1rem;
-  margin: 0;
-  background-color: rgba(0,0,0,.05);
-  transition: all 0.2s ease-in;
-}
-
-.loading {
-  top: -2rem;
-  opacity: 0;
-}
-
-.signedInText,
-.notSignedInText {
-  position: absolute;
-  padding-top: .8rem;
-  left: 1rem;
-  right: 6.5rem;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: inherit;
-  z-index: 1;
-  line-height: 1.3rem;
-}
-
-.signedInText {
-  padding-top: 0rem;
-  left: 4.6rem;
-}
-
 .avatar {
   border-radius: 2rem;
   float: left;
@@ -58,73 +20,34 @@ const StyledHeader = styled.header`
   background-size: cover;
   background-repeat: no-repeat;
 }
-
-.button,
-.buttonPrimary {
-  float: right;
-  margin-right: -.4rem;
-  font-weight: 500;
-  border-radius: .3rem;
-  cursor: pointer;
-  font-size: 1rem;
-  line-height: 1.4rem;
-  padding: .7rem .8rem;
-  position: relative;
-  z-index: 10;
-  background-color: transparent;
-  color: #555;
-}
-
-.buttonPrimary {
-  background-color: #346df1;
-  border-color: #346df1;
-  color: #fff;
-  text-decoration: none;
-  padding: .7rem 1.4rem;
-}
-
-.buttonPrimary:hover {
-  box-shadow: inset 0 0 5rem rgba(0,0,0,0.2)
-}
-
-.navItems {
-  margin-bottom: 2rem;
-  padding: 0;
-  list-style: none;
-}
-
-.navItem {
-  display: inline-block;
-  margin-right: 1rem;
-}
 `;
 
 const Header = () => {
-  const [session, loading] = useSession();
+  const [session] = useSession();
   const backgroundImage = `url(${get(session, ['user', 'image'])})`;
   return (
     <StyledHeader>
-      <div className='signedInStatus'>
-        <p className={(!session && loading) ? 'loading' : 'loaded'}>
+      <div>
+        <p className='p-3 d-flex justify-content-between align-items-center'>
           {!session && <>
             <span className='notSignedInText'>You are not signed in</span>
-            <a
-              href='/api/auth/signin'
-              className='buttonPrimary'
-              onClick={(e) => {
-                e.preventDefault();
-                signIn();
-              }}
-            >
-              Sign in
-            </a>
+            <span>
+              <Link
+                href='/api/auth/signin'
+                onClick={(e) => {
+                  e.preventDefault();
+                  signIn();
+                }}
+              >
+                Sign in
+              </Link>
+            </span>
           </>}
           {session && <>
-            {session.user.image && <span style={{ backgroundImage }} className='avatar' />}
-            <span className='signedInText'>
-              <small>Signed in as</small><br/>
-              <strong>{session.user.email || session.user.name}</strong>
-            </span>
+            <div className='d-flex align-items-center'>
+              {session.user.image && <span style={{ backgroundImage }} className='avatar' />}
+              <strong className='ms-2'>{session.user.email || session.user.name}</strong>
+            </div>
             <a
               href={'/api/auth/signout'}
               className='button'
@@ -139,11 +62,11 @@ const Header = () => {
         </p>
       </div>
       <nav>
-        <ul className='navItems'>
-          <li className='navItem'><Link href='/'><a>Home</a></Link></li>
-          <li className='navItem'><Link href='/protected'><a>Protected</a></Link></li>
-          <li className='navItem'><Link href='/api-example'><a>API</a></Link></li>
-        </ul>
+        <div className='d-flex'>
+          <Link href='/'><a>Home</a></Link>
+          <Link href='/protected'><a className='ms-2'>Protected</a></Link>
+          <Link href='/api-example'><a className='ms-2'>API</a></Link>
+        </div>
       </nav>
     </StyledHeader>
   );

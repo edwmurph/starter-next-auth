@@ -1,4 +1,3 @@
-import React from 'react';
 import { Provider } from 'next-auth/client';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Layout from '../components/layout';

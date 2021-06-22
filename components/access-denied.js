@@ -1,16 +1,18 @@
-import React from 'react';
 import { signIn } from 'next-auth/client';
+import Link from 'next/link';
 
 const AccessDenied = () => {
   return (
     <>
       <h1>Access Denied</h1>
       <p>
-        <a href='/api/auth/signin'
+        <Link href='/api/auth/signin'
           onClick={(e) => {
             e.preventDefault();
             signIn();
-          }}>You must be signed in to view this page</a>
+          }}>
+          You must be signed in to view this page
+        </Link>
       </p>
     </>
   );
