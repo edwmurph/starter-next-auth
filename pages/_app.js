@@ -24,7 +24,7 @@ const theme = {
 const App = ({ Component, pageProps }) => {
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyle/>
       <ThemeProvider theme={theme}>
         <Provider
           options={{
@@ -45,7 +45,7 @@ const App = ({ Component, pageProps }) => {
           session={pageProps.session}
         >
           <Layout>
-            <Component {...pageProps} />
+            <Component {...pageProps}/>
           </Layout>
         </Provider>
       </ThemeProvider>

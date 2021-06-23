@@ -45,7 +45,7 @@ const Header = () => {
           </>}
           {session && <>
             <div className='d-flex align-items-center'>
-              {session.user.image && <span style={{ backgroundImage }} className='avatar' />}
+              {session.user.image && <span style={{ backgroundImage }} className='avatar'/>}
               <strong className='ms-2'>{session.user.email || session.user.name}</strong>
             </div>
             <a
