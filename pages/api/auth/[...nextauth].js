@@ -17,9 +17,13 @@ export default NextAuth({
         password: { label: 'Password', type: 'password' },
       },
       authorize: async (credentials) => {
-        console.log('credentials', credentials);
         // Add logic here to look up the user from the credentials supplied
-        const user = { id: 1, name: 'J Smith', email: 'jsmith@example.com' };
+        const user = {
+          id: 1,
+          name: 'J Smith',
+          email: credentials.email,
+          role2: 'admin',
+        };
 
         if (user) {
         // Any object returned will be saved in `user` property of the JWT
@@ -100,9 +104,12 @@ export default NextAuth({
   // when an action is performed.
   // https://next-auth.js.org/configuration/callbacks
   callbacks: {
+    session: async (session) => {
+      // lookup user and add role to session
+      return { ...session, role: 'admin' };
+    },
     // async signIn(user, account, profile) { return true },
     // async redirect(url, baseUrl) { return baseUrl },
-    // async session(session, user) { return session },
     // async jwt(token, user, account, profile, isNewUser) { return token }
   },
 
@@ -116,4 +123,5 @@ export default NextAuth({
 
   // Enable debug messages in the console if you are having problems
   debug: false,
+
 });

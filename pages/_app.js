@@ -13,6 +13,10 @@ iframe {
   border-radius: .5rem;
   filter: invert(1);
 }
+
+  .pre-wrap {
+    white-space: pre-wrap;
+  }
 `;
 
 const theme = {
