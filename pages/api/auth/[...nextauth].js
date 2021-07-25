@@ -22,7 +22,6 @@ export default NextAuth({
           id: 1,
           name: 'J Smith',
           email: credentials.email,
-          role2: 'admin',
         };
 
         if (user) {
@@ -105,6 +104,13 @@ export default NextAuth({
   // https://next-auth.js.org/configuration/callbacks
   callbacks: {
     session: async (session) => {
+      /*
+      const adminUsers = [];
+
+      if (adminUsers.includes( session.user.email )) {
+      }
+      */
+
       // lookup user and add role to session
       return { ...session, role: 'admin' };
     },
