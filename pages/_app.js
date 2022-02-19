@@ -21,8 +21,8 @@ iframe {
 
 const theme = {
   colors: {
-    primary: '#0070f3',
-  },
+    primary: '#0070f3'
+  }
 };
 
 const App = ({ Component, pageProps }) => {
@@ -44,7 +44,7 @@ const App = ({ Component, pageProps }) => {
             //
             // Note: If a session has expired when keep alive is triggered, all open
             // windows / tabs will be updated to reflect the user is signed out.
-            keepAlive: 0,
+            keepAlive: 0
           }}
           session={pageProps.session}
         >

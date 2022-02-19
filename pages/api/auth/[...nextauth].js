@@ -14,14 +14,14 @@ export default NextAuth({
       // e.g. domain, username, password, 2FA token, etc.
       credentials: {
         email: { label: 'Email', type: 'email', placeholder: 'jsmith@email.com' },
-        password: { label: 'Password', type: 'password' },
+        password: { label: 'Password', type: 'password' }
       },
       authorize: async (credentials) => {
         // Add logic here to look up the user from the credentials supplied
         const user = {
           id: 1,
           name: 'J Smith',
-          email: credentials.email,
+          email: credentials.email
         };
 
         if (user) {
@@ -33,19 +33,19 @@ export default NextAuth({
         // You can also Reject this callback with an Error or with a URL:
         // throw new Error('error message') // Redirect to error page
         // throw '/path/to/redirect'        // Redirect to a URL
-      },
+      }
     }),
 
     // EMAIL via AWS SES
     Providers.Email({
       server: process.env.EMAIL_SERVER,
-      from: process.env.EMAIL_FROM,
+      from: process.env.EMAIL_FROM
     }),
 
     Providers.Google({
       clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-    }),
+      clientSecret: process.env.GOOGLE_SECRET
+    })
   ],
   // Database optional. MySQL, Maria DB, Postgres and MongoDB are supported.
   // https://next-auth.js.org/configuration/databases
@@ -67,7 +67,7 @@ export default NextAuth({
     jwt: true,
 
     // Seconds - How long until an idle session expires and is no longer valid.
-    maxAge: 60 * 60 * 42 * 30, // 30 days
+    maxAge: 60 * 60 * 42 * 30 // 30 days
   },
 
   // JSON Web tokens are only used for sessions if the `jwt: true` session
@@ -78,7 +78,7 @@ export default NextAuth({
     secret: process.env.SECRET,
 
     // Set to true to use encryption (default: false)
-    encryption: true,
+    encryption: true
     // You can define your own encode/decode functions for signing and encryption
     // if you want to override the default behaviour.
     // encode: async ({ secret, token, maxAge }) => {},
@@ -113,7 +113,7 @@ export default NextAuth({
 
       // lookup user and add role to session
       return { ...session, role: 'admin' };
-    },
+    }
     // async signIn(user, account, profile) { return true },
     // async redirect(url, baseUrl) { return baseUrl },
     // async jwt(token, user, account, profile, isNewUser) { return token }
@@ -128,6 +128,6 @@ export default NextAuth({
   theme: 'dark',
 
   // Enable debug messages in the console if you are having problems
-  debug: false,
+  debug: false
 
 });
