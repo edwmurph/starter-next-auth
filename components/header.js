@@ -24,7 +24,7 @@ const StyledHeader = styled.header`
 
 const Header = () => {
   const [session] = useSession();
-  const backgroundImage = `url(${get(session, ['user', 'image'])})`;
+  const backgroundImage = `url(${ get( session, ['user', 'image'] ) })`;
   return (
     <StyledHeader>
       <div>
@@ -34,7 +34,7 @@ const Header = () => {
             <span>
               <Link
                 href='/api/auth/signin'
-                onClick={(e) => {
+                onClick={( e ) => {
                   e.preventDefault();
                   signIn();
                 }}
@@ -51,7 +51,7 @@ const Header = () => {
             <a
               href={'/api/auth/signout'}
               className='button'
-              onClick={(e) => {
+              onClick={( e ) => {
                 e.preventDefault();
                 signOut();
               }}

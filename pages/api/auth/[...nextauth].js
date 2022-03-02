@@ -16,7 +16,7 @@ export default NextAuth({
         email: { label: 'Email', type: 'email', placeholder: 'jsmith@email.com' },
         password: { label: 'Password', type: 'password' }
       },
-      authorize: async (credentials) => {
+      authorize: async ( credentials ) => {
         // Add logic here to look up the user from the credentials supplied
         const user = {
           id: 1,
@@ -24,7 +24,7 @@ export default NextAuth({
           email: credentials.email
         };
 
-        if (user) {
+        if ( user ) {
         // Any object returned will be saved in `user` property of the JWT
           return user;
         }
@@ -103,7 +103,7 @@ export default NextAuth({
   // when an action is performed.
   // https://next-auth.js.org/configuration/callbacks
   callbacks: {
-    session: async (session) => {
+    session: async ( session ) => {
       /*
       const adminUsers = [];
 

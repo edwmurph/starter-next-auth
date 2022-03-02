@@ -1,12 +1,12 @@
 import { getSession } from 'next-auth/client';
 
-export default async (req, res) => {
+export default async ( req, res ) => {
   const session = await getSession({ req });
 
-  if (session) {
+  if ( session ) {
     // example of role based route protection
-    if (session.role === 'admin') {
-      res.send({ content: `You are signed in with role: ${session.role}` });
+    if ( session.role === 'admin' ) {
+      res.send({ content: `You are signed in with role: ${ session.role }` });
     } else {
       res.send({ error: 'You must be an admin to get this content.' });
     }

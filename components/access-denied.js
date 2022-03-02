@@ -8,7 +8,7 @@ const AccessDenied = () => {
       <p>
         <Link
           href='/api/auth/signin'
-          onClick={(e) => {
+          onClick={( e ) => {
             e.preventDefault();
             signIn();
           }}
