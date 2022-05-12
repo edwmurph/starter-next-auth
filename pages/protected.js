@@ -28,10 +28,10 @@ const Page = () => {
 
   // If session exists, display content
   return (
-    <>
+    <div>
       <h1>Protected Page</h1>
       <p><strong>{content || '\u00a0'}</strong></p>
-    </>
+    </div>
   );
 };
 

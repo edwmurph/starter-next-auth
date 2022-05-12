@@ -3,7 +3,7 @@ import { signIn, signOut, useSession } from 'next-auth/client';
 import styled from 'styled-components';
 import get from 'lodash.get';
 
-const StyledHeader = styled.header`
+const Container = styled.header`
   /* Set min-height to avoid page reflow while session loading */
 .signedInStatus {
   display: block;
@@ -24,11 +24,13 @@ const StyledHeader = styled.header`
 
 const Header = () => {
   const [session] = useSession();
+
   const backgroundImage = `url(${ get( session, ['user', 'image'] ) })`;
+
   return (
-    <StyledHeader>
+    <Container>
       <div>
-        <p className='p-3 d-flex justify-content-between align-items-center'>
+        <div className='p-3 d-flex justify-content-between align-items-center'>
           {!session && <>
             <span className='notSignedInText'>You are not signed in</span>
             <span>
@@ -59,7 +61,7 @@ const Header = () => {
               Sign out
             </a>
           </>}
-        </p>
+        </div>
       </div>
       <nav>
         <div className='d-flex'>
@@ -68,7 +70,7 @@ const Header = () => {
           <Link href='/api-example'><a className='ms-2'>API</a></Link>
         </div>
       </nav>
-    </StyledHeader>
+    </Container>
   );
 };
 
