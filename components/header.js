@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { signIn, signOut, useSession } from 'next-auth/client';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import styled from 'styled-components';
 import get from 'lodash.get';
 
@@ -23,32 +23,31 @@ const Container = styled.header`
 `;
 
 const Header = () => {
-  const [session] = useSession();
+  const { data } = useSession();
 
-  const backgroundImage = `url(${ get( session, ['user', 'image'] ) })`;
+  const backgroundImage = `url(${ get( data, ['session', 'user', 'image'] ) })`;
 
   return (
     <Container>
       <div>
         <div className='p-3 d-flex justify-content-between align-items-center'>
-          {!session && <>
+          {!data && <>
             <span className='notSignedInText'>You are not signed in</span>
             <span>
-              <Link
-                href='/api/auth/signin'
+              <div
                 onClick={( e ) => {
                   e.preventDefault();
                   signIn();
                 }}
               >
                 Sign in
-              </Link>
+              </div>
             </span>
           </>}
-          {session && <>
+          {data && <>
             <div className='d-flex align-items-center'>
-              {session.user.image && <span style={{ backgroundImage }} className='avatar'/>}
-              <strong className='ms-2'>{session.user.email || session.user.name}</strong>
+              {backgroundImage && <span style={{ backgroundImage }} className='avatar'/>}
+              <strong className='ms-2'>{data.session.user.email || data.session.user.name}</strong>
             </div>
             <a
               href={'/api/auth/signout'}

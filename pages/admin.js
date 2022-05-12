@@ -1,14 +1,14 @@
-import { useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/react';
 import AccessDenied from '../components/access-denied';
 
 const Page = () => {
-  const [session, loading] = useSession();
+  const { data, loading } = useSession();
 
   // When rendering client side don't display anything until loading is complete
   if ( typeof window !== 'undefined' && loading ) return null;
 
   // If no session exists, display access denied message
-  if ( !session || session.role !== 'admin' ) {
+  if ( !data?.session || data.role !== 'admin' ) {
     return <AccessDenied/>;
   }
 

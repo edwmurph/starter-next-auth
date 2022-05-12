@@ -1,4 +1,4 @@
-import { Provider } from 'next-auth/client';
+import { SessionProvider } from 'next-auth/react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Layout from '../components/layout';
 
@@ -30,7 +30,7 @@ const App = ({ Component, pageProps }) => {
     <>
       <GlobalStyle/>
       <ThemeProvider theme={theme}>
-        <Provider
+        <SessionProvider
           options={{
           // Client Max Age controls how often the useSession in the client should
           // contact the server to sync the session state. Value in seconds.
@@ -51,7 +51,7 @@ const App = ({ Component, pageProps }) => {
           <Layout>
             <Component {...pageProps}/>
           </Layout>
-        </Provider>
+        </SessionProvider>
       </ThemeProvider>
     </>
   );
