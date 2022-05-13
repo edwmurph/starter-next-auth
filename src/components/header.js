@@ -1,26 +1,7 @@
 import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import styled from 'styled-components';
-import get from 'lodash.get';
 
-const Container = styled.header`
-  /* Set min-height to avoid page reflow while session loading */
-.signedInStatus {
-  display: block;
-  min-height: 4rem;
-  width: 100%;
-}
-
-.avatar {
-  border-radius: 2rem;
-  float: left;
-  height: 2.8rem;
-  width: 2.8rem;
-  background-color: white;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-`;
+import styles from '../styles/header.module.scss';
 
 const SignedIn = () => {
   const { data } = useSession();
@@ -30,8 +11,10 @@ const SignedIn = () => {
   return (
     <div className='d-flex justify-content-between align-items-center'>
       <div className='d-flex align-items-center'>
-        {backgroundImage && <span style={{ backgroundImage }} className='avatar'/>}
-        <strong className='ms-2'>{data.session.user.email || data.session.user.name}</strong>
+        {backgroundImage && <span style={{ backgroundImage }} className={styles.avatar}/>}
+        <strong className='ms-2'>
+          {data.session.user.email || data.session.user.name}
+        </strong>
       </div>
       <div
         className='ms-2'
@@ -67,13 +50,10 @@ const Header = () => {
   const { data } = useSession();
 
   return (
-    <Container className='p-3 border-bottom border-primary'>
-      <div>
-        <div className='d-flex justify-content-between align-items-center'>
-          {!data && <NotSignedIn/>}
-          {data && <SignedIn/>}
-        </div>
-      </div>
+    <div
+      className={`p-3 border-bottom border-secondary d-flex
+        justify-content-between align-items-center`}
+    >
       <nav>
         <div className='d-flex'>
           <Link href='/'><a>Home</a></Link>
@@ -82,7 +62,11 @@ const Header = () => {
           <Link href='/api-example'><a className='ms-2'>API</a></Link>
         </div>
       </nav>
-    </Container>
+      <div className='d-flex justify-content-between align-items-center'>
+        {!data && <NotSignedIn/>}
+        {data && <SignedIn/>}
+      </div>
+    </div>
   );
 };
 

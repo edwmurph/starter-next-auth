@@ -22,14 +22,13 @@
   "homepage": "https://github.com/edwmurph/starter-next-auth#readme",
   "dependencies": {
     "bootstrap": "5.1.3",
-    "lodash.get": "4.4.2",
     "next": "12.1.6",
     "next-auth": "4.3.4",
     "react": "18.1.0",
-    "react-dom": "18.1.0",
-    "styled-components": "5.3.5"
+    "react-dom": "18.1.0"
   },
   "devDependencies": {
-    "@edwmurph/eslint-config": "4.0.0"
+    "@edwmurph/eslint-config": "4.0.0",
+    "sass": "1.51.0"
   }
 }
