@@ -1,12 +1,10 @@
 import Header from './header';
-import Footer from './footer';
 
 const Layout = ({ children }) => {
   return (
-    <div className='container'>
+    <div>
       <Header/>
-      <div>{children}</div>
-      <Footer/>
+      <div className='container py-4'>{children}</div>
     </div>
   );
 };
