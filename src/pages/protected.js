@@ -30,7 +30,7 @@ const Page = () => {
   return (
     <div>
       <h1>Protected Page</h1>
-      <p><strong>{content || '\u00a0'}</strong></p>
+      <p><strong>{content}</strong></p>
     </div>
   );
 };

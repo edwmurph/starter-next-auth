@@ -16,15 +16,9 @@ const SignedIn = () => {
           {data.session.user.email || data.session.user.name}
         </strong>
       </div>
-      <div
-        className='ms-2'
-        onClick={( e ) => {
-          e.preventDefault();
-          signOut();
-        }}
-      >
+      <button className='ms-3 btn btn-light' onClick={signOut}>
         Sign out
-      </div>
+      </button>
     </div>
   );
 };
@@ -32,16 +26,9 @@ const SignedIn = () => {
 const NotSignedIn = () => {
   return (
     <div className='d-flex justify-content-between align-items-center'>
-      <div>You are not signed in</div>
-      <div
-        className='ms-2'
-        onClick={( e ) => {
-          e.preventDefault();
-          signIn();
-        }}
-      >
+      <button className='btn btn-light' onClick={signIn}>
         Sign in
-      </div>
+      </button>
     </div>
   );
 };
