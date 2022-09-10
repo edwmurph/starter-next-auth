@@ -28,7 +28,7 @@
     "react-dom": "18.1.0"
   },
   "devDependencies": {
-    "@edwmurph/eslint-config": "4.0.0",
+    "@edwmurph/eslint-config": "5.0.0",
     "sass": "1.51.0"
   }
 }
